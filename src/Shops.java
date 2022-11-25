@@ -89,7 +89,6 @@ public class Shops extends javax.swing.JFrame {
         reportMenuBtn = new javax.swing.JButton();
         logoutMenuBtn = new javax.swing.JButton();
         shopsMenuBtn = new javax.swing.JButton();
-        myAccountMenuBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         shopsTable = new javax.swing.JTable();
@@ -171,9 +170,6 @@ public class Shops extends javax.swing.JFrame {
             }
         });
 
-        myAccountMenuBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        myAccountMenuBtn.setText("My account");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -190,7 +186,6 @@ public class Shops extends javax.swing.JFrame {
                             .addComponent(productInMenuBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(productOutMenuBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(logoutMenuBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
-                    .addComponent(myAccountMenuBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(shopsMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,9 +210,7 @@ public class Shops extends javax.swing.JFrame {
                 .addComponent(productOutMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(reportMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(myAccountMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(94, 94, 94)
                 .addComponent(logoutMenuBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(130, Short.MAX_VALUE))
         );
@@ -315,7 +308,7 @@ public class Shops extends javax.swing.JFrame {
                         .addComponent(txt_name, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                         .addComponent(txt_address, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(509, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -632,7 +625,6 @@ public class Shops extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_address;
     private javax.swing.JLabel lbl_name;
     private javax.swing.JButton logoutMenuBtn;
-    private javax.swing.JButton myAccountMenuBtn;
     private javax.swing.JButton productInMenuBtn;
     private javax.swing.JButton productMenuBtn;
     private javax.swing.JButton productOutMenuBtn;
