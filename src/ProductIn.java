@@ -68,7 +68,7 @@ public class ProductIn extends javax.swing.JFrame {
         int a;
         try{
             
-            pst = con.prepareStatement("select * from product_in order by id desc");
+            pst = con.prepareStatement("SELECT product_in.id,product_in.barcode,product.name,product_in.quantity,product_in.cost,product_in.total,supplier.firstname,supplier.lastname,product_in.entry_date FROM product_in inner join product on product_in.barcode=product.barcode inner join supplier on product_in.supplier_id=supplier.id order by product_in.id desc");
             ResultSet rs = pst.executeQuery();
             
             ResultSetMetaData rd = rs.getMetaData();
@@ -80,11 +80,12 @@ public class ProductIn extends javax.swing.JFrame {
                 for(int i = 0; i < a; i++){
                     v2.add(rs.getString("id"));
                     v2.add(rs.getString("barcode"));
-                    v2.add(rs.getString("product"));
+                    v2.add(rs.getString("product.name"));
                     v2.add(rs.getString("quantity"));
                     v2.add(rs.getString("cost"));
                     v2.add(rs.getString("total"));
-                    v2.add(rs.getString("supplier_id"));
+                    v2.add(rs.getString("supplier.firstname"));
+                    v2.add(rs.getString("supplier.lastname"));
                     v2.add(rs.getString("entry_date"));
                 }
                 df.addRow(v2);
@@ -298,11 +299,11 @@ public class ProductIn extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Barcode", "Product Name", "Quantity", "Cost", "Total Cost", "Supplier", "entry_date"
+                "ID", "Barcode", "Product Name", "Quantity", "Cost", "Total Cost", "Supplier Firstname", "Supplier Lastname", "entry_date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -570,14 +571,13 @@ public class ProductIn extends javax.swing.JFrame {
                     supId = rs1.getInt("id");
                 }
                 
-                pst = con.prepareStatement("insert into product_in (barcode,product,supplier_id,quantity,cost,total,entry_date) values(?,?,?,?,?,?,?)");
+                pst = con.prepareStatement("insert into product_in (barcode,supplier_id,quantity,cost,total,entry_date) values(?,?,?,?,?,?)");
                 pst.setString(1,txt_barcode.getText());
-                pst.setString(2,txt_ProductName.getText());
-                pst.setInt(3,supId);
-                pst.setString(4,txt_quantity.getText());
-                pst.setString(5,txt_cost.getText());
-                pst.setInt(6,total);
-                pst.setString(7,created_at);
+                pst.setInt(2,supId);
+                pst.setString(3,txt_quantity.getText());
+                pst.setString(4,txt_cost.getText());
+                pst.setInt(5,total);
+                pst.setString(6,created_at);
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Product is Purchased successfully");
                 getProductsIn();   

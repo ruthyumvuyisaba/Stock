@@ -68,7 +68,7 @@ public class ProductOut extends javax.swing.JFrame {
         int a;
         try{
             
-            pst = con.prepareStatement("select * from product_out order by id desc");
+            pst = con.prepareStatement("SELECT product_out.id,product_out.barcode,product.name,product_out.quantity,product_out.cost,product_out.total,shop.name,product_out.exit_date FROM product_out inner join product on product_out.barcode=product.barcode inner join shop on product_out.shop_id=shop.id order by product_out.id desc");
             ResultSet rs = pst.executeQuery();
             
             ResultSetMetaData rd = rs.getMetaData();
@@ -80,11 +80,11 @@ public class ProductOut extends javax.swing.JFrame {
                 for(int i = 0; i < a; i++){
                     v2.add(rs.getString("id"));
                     v2.add(rs.getString("barcode"));
-                    v2.add(rs.getString("product"));
+                    v2.add(rs.getString("product.name"));
                     v2.add(rs.getString("quantity"));
                     v2.add(rs.getString("cost"));
                     v2.add(rs.getString("total"));
-                    v2.add(rs.getString("shop_id"));
+                    v2.add(rs.getString("shop.name"));
                     v2.add(rs.getString("exit_date"));
                 }
                 df.addRow(v2);
@@ -403,6 +403,7 @@ public class ProductOut extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        ProductsOutTable.setRowHeight(25);
         ProductsOutTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ProductsOutTableMouseClicked(evt);
@@ -580,7 +581,7 @@ public class ProductOut extends javax.swing.JFrame {
                     pst.setString(1,txt_barcode.getText());
                     ResultSet rs3 = pst.executeQuery();
                     if(rs3.next()){ 
-                        if(Integer.parseInt(rs3.getString("quantity")) > quantity){
+                        if(Integer.parseInt(rs3.getString("quantity")) >= quantity){
                             int newQuantity = Integer.parseInt(rs3.getString("quantity")) - quantity;
                             int newTotalCost = newQuantity * cost;
                         
@@ -590,28 +591,27 @@ public class ProductOut extends javax.swing.JFrame {
                         pst2.setInt(1,newQuantity);
                         pst2.setInt(2,newTotalCost);
                         pst2.setInt(3, Integer.parseInt(txt_barcode.getText()));
+                        pst2.executeUpdate();
+//                        if(){
+//                            JOptionPane.showMessageDialog(null,"Quantity and cost is updated in products table");
+//                        }
+//                        else{
+//                            JOptionPane.showMessageDialog(null,"Quantity and cost is not updated in products table");
+//                        }
                         
-                        if(pst2.executeUpdate() > 0){
-                            JOptionPane.showMessageDialog(null,"Quantity and cost is updated in products table");
-                        }
-                        else{
-                            JOptionPane.showMessageDialog(null,"Quantity and cost is not updated in products table");
-                        }
-                        
-                        pst = con.prepareStatement("insert into product_out (barcode,product,shop_id,quantity,cost,total,exit_date) values(?,?,?,?,?,?,?)");
+                        pst = con.prepareStatement("insert into product_out (barcode,shop_id,quantity,cost,total,exit_date) values(?,?,?,?,?,?)");
                         pst.setString(1,txt_barcode.getText());
-                        pst.setString(2,txt_ProductName.getText());
-                        pst.setInt(3,shopId);
-                        pst.setString(4,txt_quantity.getText());
-                        pst.setString(5,txt_cost.getText());
-                        pst.setInt(6,total);
-                        pst.setString(7,created_at);
+                        pst.setInt(2,shopId);
+                        pst.setString(3,txt_quantity.getText());
+                        pst.setString(4,txt_cost.getText());
+                        pst.setInt(5,total);
+                        pst.setString(6,created_at);
                         pst.executeUpdate();
                         JOptionPane.showMessageDialog(null, "Products are Distributed successfully");
                         
                     }
                         else{
-                            JOptionPane.showMessageDialog(null,"Quantity is not enough !!! Only "+rs3.getString("quantity")+" Pieces Remains");
+                            JOptionPane.showMessageDialog(null,"Quantity is not enough !!! Only "+rs3.getString("quantity")+" Pieces of "+rs3.getString("name")+" Remains");
                         }
                     }
                 
