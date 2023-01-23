@@ -215,9 +215,8 @@ public class Login extends javax.swing.JFrame {
             pst.setString(2, txt_password.getText());
             ResultSet rs = pst.executeQuery();
             if(rs.next()){
-                JOptionPane.showMessageDialog(null,"Login success");
-                Product product = new Product();
-                product.setVisible(true);
+                Report report = new Report();
+                report.setVisible(true);
                 setVisible(false);
             }
             else{
