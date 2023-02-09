@@ -28,6 +28,7 @@ public class Product extends javax.swing.JFrame {
         Connection();
         categoryCombo();
         getProducts();
+        this.setTitle("Products - Stock Management System");
     }
     
     Connection con;

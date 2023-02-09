@@ -30,6 +30,7 @@ public class ProductOut extends javax.swing.JFrame {
         Connection();
         ShopCombo();
         getProductsOut();
+        this.setTitle("Products Out - Stock Management System");
     }
 
     

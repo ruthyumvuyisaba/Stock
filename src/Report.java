@@ -26,6 +26,7 @@ public class Report extends javax.swing.JFrame {
         shops();
         stockValue();
         overAllQuantity();
+        this.setTitle("OverView - Stock Management System");
     }
     
     Connection con;
@@ -105,7 +106,12 @@ public class Report extends javax.swing.JFrame {
              ResultSet rs = pst.executeQuery();
              if(rs.next()){
                  String totalValue = rs.getString("sum(total_cost)");
-                 lbl_stockValue.setText(totalValue + " RWF");
+                 if(totalValue != null){
+                     lbl_stockValue.setText(totalValue + " RWF");
+                 }
+                 else{
+                     lbl_stockValue.setText("0 RWF");
+                 }
              }
          }
          catch(Exception e){
@@ -119,7 +125,12 @@ public class Report extends javax.swing.JFrame {
              ResultSet rs = pst.executeQuery();
              if(rs.next()){
                  String overAllQuantity = rs.getString("sum(quantity)");
-                 lbl_quantity.setText(overAllQuantity + " Pieces");
+                 if(overAllQuantity != null){
+                    lbl_quantity.setText(overAllQuantity + " Pieces");
+                 }
+                 else{
+                     lbl_quantity.setText("Empty stock");
+                 }
              }
          }
          catch(Exception e){

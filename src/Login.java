@@ -1,17 +1,7 @@
-
-import com.sun.jdi.connect.spi.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
-import java.util.Properties;
-import java.util.ResourceBundle;
-import java.util.Enumeration;
-import java.util.ArrayList;
-import java.io.IOException;
-import java.sql.CallableStatement;
 import java.sql.Statement;
-import java.sql.Types;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -28,6 +18,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setTitle("Login - Stock Management System");
     }
 
     /**
@@ -192,7 +183,8 @@ public class Login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+     
+            
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          // TODO add your handling code here:
         if(txt_username.getText().trim().isEmpty() && txt_password.getText().isEmpty()){

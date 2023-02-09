@@ -28,6 +28,7 @@ public class Shops extends javax.swing.JFrame {
         initComponents();
         Connection();
         getShops();
+        this.setTitle("Shops - Stock Management System");
     }
     
     Connection con;

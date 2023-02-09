@@ -30,6 +30,7 @@ public class ProductIn extends javax.swing.JFrame {
         Connection();
         supplierCombo();
         getProductsIn();
+        this.setTitle("Products In - Stock Management System");
     }
 
     

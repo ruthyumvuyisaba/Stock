@@ -32,6 +32,7 @@ public class Categories extends javax.swing.JFrame {
         initComponents();
         Connection();
         getCategories();
+        this.setTitle("Categories - Stock Management System");
     }
 
     

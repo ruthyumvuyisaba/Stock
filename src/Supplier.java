@@ -28,6 +28,7 @@ public class Supplier extends javax.swing.JFrame {
         initComponents();
         Connection();
         getSuppliers();
+        this.setTitle("Suppliers - Stock Management System");
     }
 
     Connection con;
